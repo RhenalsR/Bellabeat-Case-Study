@@ -8,7 +8,7 @@ women with knowledge about their own health and habits. Since it was founded in 
 quickly positioned itself as a tech-driven wellness company for women.
 
 
-They would like to analyze Bellabeat’s available consumer data to reveal more opportunities for growth. As they want to focus on how people are already using their smart devices to identify trends that can help Bellabeat's marketing strategy.
+They would like to analyze Bellabeat’s available consumer data to reveal more growth opportunities. As they want to focus on how people are already using their smart devices to identify trends that can help Bellabeat's marketing strategy.
 
 ## Questions for the Analysis:
 1. What are some trends in smart device usage?
@@ -19,7 +19,7 @@ The Business task this time is to identify opportunities for improvement and gro
 
 # Preparing Data
 
-For this analysis, I've been provided with a Fitbit personal fitness tracker dataset, available on [Kaggle](https://www.kaggle.com/datasets/arashnic/fitbit.).
+For this analysis, I've been provided with a Fitbit personal fitness tracker dataset, available on [Kaggle](https://www.kaggle.com/datasets/arashnic/fitbit).
 Thirty eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. It includes information
 about daily activity, steps, and heart rate.
 
@@ -27,18 +27,18 @@ The dataset contains a small sample since only 30 users' data was collected; add
 
 # Processing data
 
-The Data files considered were `DailyActivity_merged.csv` and `SleepDay_merged.csv`. Initially `weightLogInfo_merged.csv` was also considered but was discarted later since it contains data for only 8 users.
+The Data files considered were `DailyActivity_merged.csv` and `SleepDay_merged.csv`. Initially `weightLogInfo_merged.csv` was also considered but was discarded later since it contains data for only 8 users.
 
 ### Software used
 SQL was the tool used to clean, transform and merge the data, through BigQuery, from Google. 
-When trying to import the datasets a problem was encuntered: File `Sleepday_merged.csv` Date format 'DD/MM/YYYY hh:mm:ss _tt_' was not readable by SQL . So I converted the date to DD/MM/YYYY only.
+When trying to import the datasets a problem was encountered: File `Sleepday_merged.csv` Date format 'DD/MM/YYYY hh:mm:ss _tt_' was not readable by SQL. So I converted the date to DD/MM/YYYY only.
 While converting files, no missing values were encountered. 
 
 ### Cleaning
 
-Dataset `DailyActivity_merged.csv` contained some columns that wouldn't work for this analisis, so the necesary columns were selected, and the columns needed from `SleepDay_merged.csv` were joined into this base table.
+Dataset `DailyActivity_merged.csv` contained some columns that wouldn't work for this analysis, so the necessary columns were selected, and the columns needed from `SleepDay_merged.csv` were joined into this base table.
 ```
--- cleaning - selecting necesary rows and converting Minutes to hours to vizualize data in a comprehensive way.
+-- cleaning - selecting necessary rows and converting Minutes to hours to visualize data comprehensively.
 
 SELECT
  activity.Id,
@@ -62,11 +62,11 @@ ORDER BY
  Id, ActivityDate
 ```
 
-### _Pending Table_
+![Preview of the output table from SQL. Limited to 7 rows](/Base_table.png)
 
-LEFT Join was used instead of a Inner Join due to the amount of data. 33 people's Data was collected for `DailyActivity_merged.csv`, but only 24 people's Data was collected for `Sleepday_merged.csv`.
+LEFT JOIN was used instead of an INNER JOIN to include all the User's data gathered. Since 33 people's Data was collected for `DailyActivity_merged.csv`, but only 24 people's Data was collected for `Sleepday_merged.csv`.
 ```
--- checking the ammount of users data in each dataset --
+-- checking the amount of users data in each dataset --
 
 SELECT
 COUNT(DISTINCT activity.Id) AS DailyActivity_Ids_number,
@@ -80,8 +80,52 @@ LEFT JOIN
  ON activity.Id = sleep.Id AND activity.ActivityDate = sleep.SleepDay
 ```
 
-### _Pending Table_
+![Preview of the output table from SQL](/Num_users.png)
 
 # Analysis
 
+I checked the Minimum, maximum, and average values of the columns of interest. Using JOIN as well to have all the data in the same output table.
 
+```
+-- total time - Query to calculate minimum, maximum, and average of the total time spent using multiple (2) tables
+
+SELECT
+  MIN(TotalSteps) AS Min_steps,
+ MAX(TotalSteps) AS Max_steps,
+ ROUND(AVG(TotalSteps), 2) AS Average_steps, -- Using round to avoid excessive decimals -
+ MIN(SedentaryMinutes) AS Min_sedentary_time,
+ MAX(SedentaryMinutes) AS Max_sedentary_time,
+ ROUND(AVG(SedentaryMinutes), 2) AS Average_sedentary_time,
+ MIN(VeryActiveMinutes) AS Min_vactive_time,
+ MAX(VeryActiveMinutes) AS Max_vactive_time,
+ ROUND(AVG(VeryActiveMinutes), 2) AS Average_vactive_time,
+ MIN(FairlyActiveMinutes) AS Min_fairactive_time,
+ MAX(FairlyActiveMinutes) AS Max_fairactive_time,
+ ROUND(AVG(FairlyActiveMinutes), 2) AS Average_fairactive_time,
+ MIN(LightlyActiveMinutes) AS Min_lightactive_time,
+ MAX(LightlyActiveMinutes) AS Max_lightactive_time,
+ ROUND(AVG(LightlyActiveMinutes), 2) AS Average_lightactive_time,
+ MIN(Calories) AS Min_calories,
+ MAX(Calories) AS Max_calories,
+ ROUND(AVG(Calories), 2) AS Average_calories,
+  MIN(TotalMinutesAsleep) AS Min_sleep,
+ MAX(TotalMinutesAsleep) AS Max_sleep,
+ ROUND(AVG(TotalMinutesAsleep), 2) AS Average_sleep
+FROM
+ `bellabeat-395022.Fitabase.daily_activity` AS activity
+LEFT JOIN `Fitabase.sleep_time` AS sleep
+ ON activity.Id = sleep.Id -- merging data from the sleep_time table into this one to facilitate visualization later --
+WHERE TotalSteps !=0
+-- In normal circumstances couldn't be possible to have 0 total steps throughout an entire day, and have a
+0 value will impact the data Min and Avg calculations. '0' Excluded to have a better approximation -- 
+
+```
+| Min_steps | Max_steps | Average_steps  |Min_sedentary_time | Max_sedentary_time | Average_sedentary_time |	Min_vactive_time	| Max_vactive_time	| Average_vactive_time	| Min_fairactive_time | Max_fairactive_time | Average_fairactive_time | Min_lightactive_time | Max_lightactive_time | Average_lightactive_time | Min_calories | Max_calories | Average_calories |	Min_sleep	| Max_sleep	| Average_sleep	| 
+|-----------|-----------|----------------|-------------------|--------------------|------------------------|------------------|------------------|----------------------|---------------------|---------------------|-------------------------|----------------------|----------------------|--------------------------|--------------|--------------|------------------|-----------|-----------|---------------|
+| 4         | 36019     | 8541.85        | 0                 | 1440               | 775.64                 | 0                | 210              | 25.15                | 0                   | 143                 | 18.12                   | 0                    | 518                  | 210.55                   | 52           | 4900         | 2364.57          | 58        | 796       | 419.11        |
+
+
+Further checking these averages some Tableu visualizations were made. 
+
+![Tableu visualization no 1. Bar chart of average time spent](/)
+																
