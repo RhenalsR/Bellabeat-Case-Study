@@ -7,6 +7,8 @@ Using technology that informs and inspires women around the world. Collecting da
 women with knowledge about their own health and habits. Since it was founded in 2013, Bellabeat has grown rapidly and
 quickly positioned itself as a tech-driven wellness company for women.
 
+![Women running, health image, purple colors](https://media.self.com/photos/57d888bc24fe9dae328314b1/2:1/w_1280,c_limit/thing-every-workout-more-effective_facebook.png)
+
 
 They would like to analyze Bellabeat’s available consumer data to reveal more growth opportunities. As they want to focus on how people are already using their smart devices to identify trends that can help Bellabeat's marketing strategy.
 
@@ -127,12 +129,12 @@ WHERE TotalSteps !=0
 
 Further checking these averages some Tableu visualizations were made. 
 
-![Tableu visualization no 1. Bar chart of average time spent](/Avg_time_comp.png) _change to comp2_
+![Tableu visualization no 1. Bar chart of average time spent](/Avg_time_comp.png)
 
 The visualization above confirms what our base table showed, the average sedentary time spent is much bigger than the average active time spent. 
 
 
-![Tableu visualization no 1. Bar chart of average time spent](/Daily_comparison.png)
+![Tableu visualization no 1. Bar chart of average time spent](/Daily_comparison2.png)
 
 For that reason, I checked which days tend to have the most average sedentary time. It's visible that Tuesday is the day with the most sedentary time, followed by Wednesday, and Thursday, respectively. While the least sedentary time was recorded on the weekends.
 
@@ -155,3 +157,7 @@ You can take a look at the detailed tableau dashboard [here](https://public.tabl
 
 # Recommendations
 
+Given the conclusions, the recommendation would be to encourage more activities throughout the week, even during working hours; such as active pauses with movement and stretching short exercises, or even little walks or yoga during breaks.
+Since this data analysis showed most parts of the users tend to have long periods of time in sedentary activities, the marketing strategy could focus the target scoop on women who are in part-time or full-time jobs or study, since they seem more willing to acquire a health-smart device and is a population that Bellabeat may focus on growing.
+
+![woman doing yoga, purple background](https://t3.ftcdn.net/jpg/01/94/67/00/360_F_194670075_udRdcHdWXFDxnYZKCzkWF5qBZn4BAiHv.jpg)
