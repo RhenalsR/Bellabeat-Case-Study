@@ -127,5 +127,31 @@ WHERE TotalSteps !=0
 
 Further checking these averages some Tableu visualizations were made. 
 
-![Tableu visualization no 1. Bar chart of average time spent](/)
-																
+![Tableu visualization no 1. Bar chart of average time spent](/Avg_time_comp.png) _change to comp2_
+
+The visualization above confirms what our base table showed, the average sedentary time spent is much bigger than the average active time spent. 
+
+
+![Tableu visualization no 1. Bar chart of average time spent](/Daily_comparison.png)
+
+For that reason, I checked which days tend to have the most average sedentary time. It's visible that Tuesday is the day with the most sedentary time, followed by Wednesday, and Thursday, respectively. While the least sedentary time was recorded on the weekends.
+
+![Tableu visualization no 1. Bar chart of average time spent](/Sleep_comp.png) 
+
+Doing some deeper research a chart comparing the average time slept and average sedentary time, having a better perspective of the amount of inactive time. And is also appreciated the irregularity of the sleeping hours, despite the irregularity, the average has been maintained in a good sleeping time, since the recommendation is to sleep between 6-8 hours(360-480 min).
+
+![Tableu visualization no 1. Bar chart of average time spent](/Calories_correlation.png)
+
+It's visible how the Steps walked and calories burnt have a positive correlation, and it's also good to see how was a slight increase in the average Calories burnt thorough the period tested. That could be attributed to the health app track and/or suggestions
+
+You can take a look at the detailed tableau dashboard [here](https://public.tableau.com/app/profile/ramses.rhenals/viz/Bellabeat_16913877065250/Dashboard4)!
+
+## Conclusions
+
+* Users did well with the total steps walked, the average was 8541.85 steps, which is close to the [10,000 steps recommended](https://www.medicalnewstoday.com/articles/how-many-steps-should-you-take-a-day#:~:text=Current%20guidelines%20suggest%20that%20most,in%20line%20with%20physical%20activity.) to achieve health benefits.
+* Users showed a clear and worrying habit of doing sedentary activities most of the time, and a lack of time spent on moderate or/and highly active activities.
+* The days with the most sedentarism trend were in the middle of the week, which could be related to the Job's daily tasks.
+* Users seem to worry about their sleeping time, but the habit does not seem too strong and there is a chance of improvement in their sleeping time consistency.
+
+# Recommendations
+
