@@ -10,7 +10,7 @@ quickly positioned itself as a tech-driven wellness company for women.
 ![Women running, health image, purple colors](https://media.self.com/photos/57d888bc24fe9dae328314b1/2:1/w_1280,c_limit/thing-every-workout-more-effective_facebook.png)
 
 
-They would like to analyze Bellabeat’s available consumer data to reveal more growth opportunities. As they want to focus on how people are already using their smart devices to identify trends that can help Bellabeat's marketing strategy.
+They would like to analyze Bellabeat’s available consumer data to reveal more growth opportunities, as they want to focus on how people are already using their smart devices to identify trends that can help Bellabeat's marketing strategy.
 
 ## Questions for the Analysis:
 1. What are some trends in smart device usage?
@@ -33,7 +33,7 @@ The Data files considered were `DailyActivity_merged.csv` and `SleepDay_merged.c
 
 ### Software used
 SQL was the tool used to clean, transform and merge the data, through BigQuery, from Google. 
-When trying to import the datasets a problem was encountered: File `Sleepday_merged.csv` Date format 'DD/MM/YYYY hh:mm:ss _tt_' was not readable by SQL. So I converted the date to DD/MM/YYYY only.
+When trying to import the datasets a problem was encountered: File `Sleepday_merged.csv` Date format 'DD/MM/YYYY hh:mm:ss _tt_' was not readable by SQL. So I converted the date to DD/MM/YYYY only using Google Sheets(Excel).
 While converting formats, no missing values were encountered. 
 
 ### Cleaning
